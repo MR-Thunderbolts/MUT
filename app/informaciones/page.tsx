@@ -20,9 +20,9 @@ export default function InfoPage() {
                 <div className="flex items-center justify-center gap-8 w-full">
                     {/* QR Code Container */}
                     <div className="bg-black p-4 pb-2 rounded-3xl shadow-xl flex flex-col items-center gap-2">
-                        <div className="bg-white p-1">
+                        <div className="p-1">
                             <img
-                                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mut.cl/contacto&color=000000"
+                                src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://mut.cl/contacto&color=FFFFFF&bgcolor=000000"
                                 alt="Contact QR"
                                 className="w-32 h-32 object-contain"
                             />
