@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-montserrat);
+  --color-brand-coral: #FF8577;
+  --color-brand-cream: #FFF9F2;
+  --color-brand-dark: #393939;
+  --color-brand-gray: #E5E5E5;
+}
+
+:root {
+  --foreground-rgb: 57, 57, 57;
+  --background-start-rgb: 255, 249, 242;
+  --background-end-rgb: 255, 249, 242;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: #FFF9F2;
+  font-family: var(--font-montserrat), sans-serif;
+  overflow: hidden;
+  overscroll-behavior: none;
+  height: 100dvh;
+}
+
+/* Utilities for layout zones */
+.zone-top {
+  height: 25%;
+  pointer-events: none;
+  /* Hard to reach */
+}
+
+.zone-middle {
+  height: 50%;
+  overflow-y: auto;
+  pointer-events: auto;
+  /* Interactive Safe Zone */
+}
+
+.zone-bottom {
+  height: 25%;
+  pointer-events: none;
+  /* Hard to reach */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
