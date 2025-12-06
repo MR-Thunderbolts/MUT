@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import SimpleHeader from "@/components/SimpleHeader";
+import SimpleHeader from "../components/shared/SimpleHeader";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -23,15 +23,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${montserrat.variable} antialiased h-[100dvh] overflow-hidden`}>
         <main className="flex flex-col h-full w-full bg-brand-cream text-brand-dark">
-          {/* Top Zone (15%) - Visual/Header only */}
-          {/* Reduced from 25% to 15% per user feedback */}
-          <div className="h-[15%] w-full flex items-start justify-center relative z-50 pointer-events-auto">
+          {/* Top Zone - Auto height based on content */}
+          <div className="w-full flex items-start justify-center relative z-50 pointer-events-auto shrink-0">
             <SimpleHeader />
           </div>
 
-          {/* Middle Zone: Interactive Safe Zone (Expanded) */}
-          {/* Height increased to 85% to fill the remaining space */}
-          <div className="w-full h-[85%] relative z-10 overflow-y-auto no-scrollbar pointer-events-auto">
+          {/* Middle Zone - Fills remaining space */}
+          <div className="w-full flex-1 relative z-10 overflow-y-auto no-scrollbar pointer-events-auto min-h-0">
             {children}
           </div>
 
