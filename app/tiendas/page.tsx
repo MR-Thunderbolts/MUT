@@ -31,7 +31,7 @@ export default function StoresPage() {
     }, [selectedCategory, searchQuery]);
 
     return (
-        <div className="flex flex-col h-full w-full bg-brand-cream pt-4">
+        <div className="flex flex-col w-full bg-brand-cream pt-4 pb-6 min-h-full relative">
             <PageHeader
                 title="¡Encuentra lo que buscas!"
                 subtitle="Explora nuestras tiendas, restaurantes y más"
@@ -102,9 +102,9 @@ export default function StoresPage() {
             </div>
 
             {/* Stores Grid */}
-            <div className="flex-1 overflow-y-auto px-4 pb-24 no-scrollbar">
+            <div className="px-4 pb-24">
                 {filteredStores.length > 0 ? (
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-3 lg:grid-cols-4 gap-4">
                         {filteredStores.map((store) => (
                             <StoreCard
                                 key={store.id}
