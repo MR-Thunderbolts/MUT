@@ -19,8 +19,8 @@ function MapContent() {
     const [isDragging, setIsDragging] = useState(false);
     const dragStartRef = useRef({ x: 0, y: 0, scrollLeft: 0, scrollTop: 0 });
 
-    // Zoom State - Start at 200% (100% zoomed in)
-    const [scale, setScale] = useState(2.0);
+    // Zoom State - Start at 300% (200% zoomed in)
+    const [scale, setScale] = useState(3.0);
     const MIN_SCALE = 0.5;
     const MAX_SCALE = 3;
 
@@ -123,8 +123,8 @@ function MapContent() {
 
     // Re-center function - resets zoom and scroll position
     const handleRecenter = useCallback(() => {
-        // Reset scale to initial 200%
-        setScale(2.0);
+        // Reset scale to initial 300%
+        setScale(3.0);
 
         // Re-center the scroll position
         if (scrollContainerRef.current) {
@@ -188,7 +188,7 @@ function MapContent() {
                 <LocationPill label={`PISO ${currentLevel}`} />
 
                 {/* Re-center Button - Bottom Left */}
-                <div className="absolute left-4 top-1/2 translate-y-[116px] z-[60] pointer-events-auto">
+                <div className="absolute left-4 top-1/2 translate-y-[116px] z-10 pointer-events-auto">
                     <button
                         onClick={handleRecenter}
                         className="bg-white/90 backdrop-blur-sm border border-brand-dark/5 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 active:scale-95"
