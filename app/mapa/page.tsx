@@ -107,6 +107,8 @@ function MapContent() {
 
     const handleTouchMove = useCallback((e: React.TouchEvent) => {
         if (e.touches.length === 2 && touchStartDist.current !== null) {
+            // Prevent default to avoid browser zoom/scroll during pinch
+            e.preventDefault();
             const touch1 = e.touches[0];
             const touch2 = e.touches[1];
             const dist = Math.hypot(touch1.pageX - touch2.pageX, touch1.pageY - touch2.pageY);
@@ -117,6 +119,24 @@ function MapContent() {
 
     const handleTouchEnd = useCallback(() => {
         touchStartDist.current = null;
+    }, []);
+
+    // Re-center function - resets zoom and scroll position
+    const handleRecenter = useCallback(() => {
+        // Reset scale to initial 200%
+        setScale(2.0);
+
+        // Re-center the scroll position
+        if (scrollContainerRef.current) {
+            const container = scrollContainerRef.current;
+            // Use setTimeout to ensure scale change is applied first
+            setTimeout(() => {
+                const centerX = (container.scrollWidth - container.clientWidth) / 2;
+                const centerY = (container.scrollHeight - container.clientHeight) / 2;
+                container.scrollLeft = centerX;
+                container.scrollTop = centerY;
+            }, 50);
+        }
     }, []);
 
 
@@ -166,6 +186,32 @@ function MapContent() {
 
                 {/* Current Level Indicator (Floating) */}
                 <LocationPill label={`PISO ${currentLevel}`} />
+
+                {/* Re-center Button - Bottom Left */}
+                <div className="absolute left-4 top-1/2 translate-y-[116px] z-[60] pointer-events-auto">
+                    <button
+                        onClick={handleRecenter}
+                        className="bg-white/90 backdrop-blur-sm border border-brand-dark/5 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 active:scale-95"
+                        aria-label="Re-center map"
+                        title="Re-center map"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-6 w-6 text-brand-dark"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="M12 4v16m8-8H4"
+                            />
+                            <circle cx="12" cy="12" r="3" fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
 
 
             </div>
