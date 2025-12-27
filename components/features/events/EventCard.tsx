@@ -103,72 +103,80 @@ export default function EventCard() {
                 {/* Card Container with Navigation */}
                 <div className="flex-1 w-full flex flex-col items-center justify-center min-h-0 gap-4 relative">
 
-                    <div className="relative w-full max-w-[360px] aspect-[2/3] flex items-center justify-center">
-                        {/* Main Card */}
-                        <Card
-                            className="h-full w-full rounded-3xl overflow-hidden shadow-xl flex flex-col border-none relative z-10"
-                            style={{ backgroundColor: currentEvent.color }}
-                        >
-                            {/* Background Title Watermark */}
-                            <div className="absolute inset-0 flex items-center justify-center opacity-90 pointer-events-none">
-                                <h1 className="text-5xl font-black text-white/20 text-center leading-none tracking-tighter uppercase break-words px-4 select-none">
-                                    {currentEvent.title}
-                                </h1>
-                            </div>
+                    {/* Main Card Wrapper - Flex Row for Robust Layout with Constraints */}
+                    <div className="flex flex-row items-center justify-center w-full max-w-[420px] h-full max-h-full gap-2 px-1 min-h-0">
 
-                            {/* Content Overlay */}
-                            <div className="mt-auto m-3 bg-brand-dark rounded-2xl p-3 flex gap-3 shadow-lg relative z-20">
-                                {/* Date Box */}
-                                <div className="bg-white rounded-xl w-14 shrink-0 flex flex-col items-center justify-center py-2 shadow-sm">
-                                    <span className="text-brand-dark font-bold text-lg leading-none">{currentEvent.dateStart}</span>
-                                    <span className="text-brand-dark font-bold text-[9px] uppercase tracking-wider">{currentEvent.month}</span>
-                                    <div className="w-6 h-[1px] bg-brand-dark/20 my-1"></div>
-                                    <span className="text-brand-dark font-bold text-lg leading-none">{currentEvent.dateEnd}</span>
-                                </div>
-
-                                {/* Text Content */}
-                                <div className="flex-1 flex flex-col justify-between min-w-0">
-                                    <div>
-                                        <div className="flex justify-between items-start gap-1">
-                                            <h3 className="text-white font-bold text-sm leading-tight line-clamp-2">{currentEvent.title}</h3>
-                                        </div>
-                                        <p className="text-brand-gray/80 text-[10px] mt-1 line-clamp-2 leading-relaxed">
-                                            {currentEvent.description}
-                                        </p>
-                                    </div>
-
-                                    <Button
-                                        onClick={() => setIsModalOpen(true)}
-                                        size="sm"
-                                        className="mt-2 w-full h-7 text-[10px] font-bold rounded-full hover:brightness-110 transition-all active:scale-95"
-                                        style={{ backgroundColor: currentEvent.buttonColor, color: '#393939' }}
-                                    >
-                                        Ver detalles
-                                    </Button>
-                                </div>
-                            </div>
-                        </Card>
-
-                        {/* Navigation Arrows - Absolute on sides but large touch targets */}
+                        {/* Left Arrow - Relative in Flex Flow */}
                         <Button
                             onClick={prevEvent}
-                            className="absolute left-[-12px] top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white text-brand-dark shadow-lg border border-brand-gray/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                            className="shrink-0 z-30 w-10 h-10 rounded-full bg-white shadow-lg border border-brand-gray/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all p-0"
                             aria-label="Previous event"
                         >
-                            <CaretLeft size={20} weight="bold" />
+                            <CaretLeft size={20} weight="bold" color="#393939" />
                         </Button>
 
+                        {/* Card Container - Constrained to fit both width and height */}
+                        <div className="flex-1 min-w-0 h-full max-h-full flex items-center justify-center py-2">
+                            <Card
+                                className="w-auto h-auto max-w-full max-h-full aspect-[2/3] rounded-3xl overflow-hidden shadow-xl flex flex-col border-none relative z-10"
+                                style={{ backgroundColor: currentEvent.color }}
+                            >
+                                {/* Background Title Watermark - Reverted size */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-90 pointer-events-none overflow-hidden">
+                                    <h1 className="text-5xl font-black text-white/20 text-center leading-none tracking-tighter uppercase break-words px-4 select-none w-full">
+                                        {currentEvent.title}
+                                    </h1>
+                                </div>
+
+                                {/* Content Overlay */}
+                                <div
+                                    className="mt-auto m-2 sm:m-3 rounded-2xl p-2 sm:p-3 flex gap-2 sm:gap-3 shadow-lg relative z-20"
+                                    style={{ backgroundColor: currentEvent.buttonColor }}
+                                >
+                                    {/* Date Box */}
+                                    <div className="bg-white rounded-xl w-12 sm:w-14 shrink-0 flex flex-col items-center justify-center py-2 shadow-sm">
+                                        <span className="text-brand-dark font-bold text-base sm:text-lg leading-none">{currentEvent.dateStart}</span>
+                                        <span className="text-brand-dark font-bold text-[8px] sm:text-[9px] uppercase tracking-wider">{currentEvent.month}</span>
+                                        <div className="w-6 h-[1px] bg-brand-dark/20 my-1"></div>
+                                        <span className="text-brand-dark font-bold text-base sm:text-lg leading-none">{currentEvent.dateEnd}</span>
+                                    </div>
+
+                                    {/* Text Content */}
+                                    <div className="flex-1 flex flex-col justify-between min-w-0">
+                                        <div>
+                                            <div className="flex justify-between items-start gap-1">
+                                                <h3 className="text-brand-dark font-bold text-xs sm:text-sm leading-tight line-clamp-2">{currentEvent.title}</h3>
+                                            </div>
+                                            <p className="text-brand-dark/80 text-[9px] sm:text-[10px] mt-1 line-clamp-2 leading-relaxed font-medium">
+                                                {currentEvent.description}
+                                            </p>
+                                        </div>
+
+                                        <Button
+                                            onClick={() => setIsModalOpen(true)}
+                                            size="sm"
+                                            className="mt-2 w-full h-6 sm:h-7 text-[9px] sm:text-[10px] font-bold rounded-full hover:brightness-110 transition-all active:scale-95 border border-brand-dark/5"
+                                            style={{ backgroundColor: 'rgba(255,255,255,0.6)', color: '#1A1A1A' }}
+                                        >
+                                            Ver detalles
+                                        </Button>
+                                    </div>
+                                </div>
+                            </Card>
+                        </div>
+
+                        {/* Right Arrow - Relative in Flex Flow */}
                         <Button
                             onClick={nextEvent}
-                            className="absolute right-[-12px] top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white text-brand-dark shadow-lg border border-brand-gray/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                            className="shrink-0 z-30 w-10 h-10 rounded-full bg-white shadow-lg border border-brand-gray/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all p-0"
                             aria-label="Next event"
                         >
-                            <CaretRight size={20} weight="bold" />
+                            <CaretRight size={20} weight="bold" color="#393939" />
                         </Button>
                     </div>
 
-                    {/* Pagination Dots */}
-                    <div className="flex justify-center gap-2 h-4 items-center shrink-0">
+                    {/* Pagination Dots - Ensure it has space */}
+                    <div className="flex justify-center gap-2 h-4 items-center shrink-0 mb-2">
                         {EVENTS.map((_, index) => (
                             <div
                                 key={index}
