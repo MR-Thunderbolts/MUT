@@ -77,14 +77,14 @@ export default function MapLegendModal() {
 
     return (
         <div
-            className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-[60] ${isOpen ? "translate-y-0" : "translate-y-[calc(100%-60px)]"
+            className={`absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-[60] ${isOpen ? "translate-y-0" : "translate-y-[calc(100%-72px)]"
                 }`}
             style={{ maxHeight: "80vh" }}
         >
             {/* Handle / Header */}
             <div
                 onClick={() => setIsOpen(!isOpen)}
-                className="h-[60px] flex flex-col items-center justify-center cursor-pointer bg-brand-coral rounded-t-3xl"
+                className="h-[72px] flex flex-col items-center justify-start pt-4 cursor-pointer bg-brand-coral rounded-t-3xl"
             >
                 <div className="w-12 h-1.5 bg-white/50 rounded-full mb-2" />
                 <span className="text-white font-bold text-sm">Leyenda</span>
