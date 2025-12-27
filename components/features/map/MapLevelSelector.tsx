@@ -1,5 +1,8 @@
 "use client";
 
+import { Button } from "@/components/ui/Button";
+import { cn } from "@/lib/utils";
+
 interface MapLevelSelectorProps {
     currentLevel: number;
     onLevelChange: (level: number) => void;
@@ -14,19 +17,21 @@ export default function MapLevelSelector({ currentLevel, onLevelChange }: MapLev
             {LEVELS.map((level) => {
                 const isDisabled = DISABLED_LEVELS.includes(level);
                 return (
-                    <button
+                    <Button
                         key={level}
                         onClick={() => !isDisabled && onLevelChange(level)}
                         disabled={isDisabled}
-                        className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all mb-1 last:mb-0 ${isDisabled
-                                ? "text-brand-dark/10 bg-gray-100/50 cursor-not-allowed"
-                                : currentLevel === level
-                                    ? "bg-brand-coral text-white shadow-md scale-110"
-                                    : "text-brand-dark hover:bg-brand-dark/5"
-                            }`}
+                        variant={currentLevel === level ? "solid" : "ghost"}
+                        size="icon-sm"
+                        className={cn(
+                            "rounded-full mb-1 last:mb-0 transition-all",
+                            isDisabled && "bg-gray-100/50 text-brand-dark/10 cursor-not-allowed hover:bg-gray-100/50",
+                            currentLevel === level && "scale-110 shadow-md",
+                            !isDisabled && currentLevel !== level && "text-brand-dark hover:bg-brand-dark/5"
+                        )}
                     >
                         {level}
-                    </button>
+                    </Button>
                 );
             })}
         </div>

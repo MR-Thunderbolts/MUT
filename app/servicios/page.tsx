@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { Bicycle, Car, ArrowLeft, X } from "@phosphor-icons/react";
-import FooterPattern from "../../components/shared/FooterPattern";
-import PageHeader from "../../components/shared/PageHeader";
+import FooterPattern from "../../components/layout/FooterPattern";
+import PageHeader from "../../components/layout/PageHeader";
 
 export default function ServicesPage() {
   const [activeModal, setActiveModal] = useState<"bicihub" | "parking" | null>(null);

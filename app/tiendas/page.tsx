@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from "react";
 import { MagnifyingGlass, MapPin, ForkKnife, Baby, House, Palette, TShirt, Laptop, Plant, Bicycle } from "@phosphor-icons/react";
-import StoreCard from "../../components/tiendas/StoreCard";
-import PageHeader from "../../components/shared/PageHeader";
+import StoreCard from "../../components/features/stores/StoreCard";
+import PageHeader from "../../components/layout/PageHeader";
 import { STORES } from "@/lib/data";
 
 const CATEGORIES = [

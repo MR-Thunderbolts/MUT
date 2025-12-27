@@ -28,6 +28,13 @@ const config: Config = {
         "18": "4.5rem", // 72px
         "22": "5.5rem", // 88px
       },
+      container: {
+        center: true,
+        padding: "1rem",
+        screens: {
+          "2xl": "1400px",
+        },
+      },
     },
   },
   plugins: [],

@@ -3,6 +3,9 @@
 import { CaretLeft, CaretRight } from "@phosphor-icons/react";
 import { useState } from "react";
 import EventModal, { EventData } from "./EventModal";
+import { Button } from "@/components/ui/Button";
+import { Card } from "@/components/ui/Card";
+import { cn } from "@/lib/utils";
 
 const EVENTS: EventData[] = [
     {
@@ -97,19 +100,20 @@ export default function EventCard() {
 
             <div className="w-full h-full flex flex-col items-center justify-center relative p-4 gap-4">
 
-                {/* Card Row with Arrows */}
-                <div className="flex items-center justify-center w-full gap-4">
+                {/* Card Row with Arrows - Fills available vertical space */}
+                <div className="flex flex-1 items-center justify-center w-full gap-4 min-h-0">
                     {/* Left Arrow */}
-                    <button
+                    <Button
                         onClick={prevEvent}
-                        className="w-10 h-10 bg-brand-dark rounded-xl flex items-center justify-center text-white shadow-md shrink-0 hover:scale-105 transition-transform"
+                        size="icon"
+                        className="bg-brand-dark text-white rounded-2xl hover:bg-brand-dark/90 hover:scale-105 transition-transform shadow-md shrink-0"
                     >
                         <CaretLeft size={24} weight="bold" />
-                    </button>
+                    </Button>
 
                     {/* Main Card Container */}
-                    <div
-                        className="relative w-full max-w-[300px] aspect-[4/5] rounded-3xl overflow-hidden shadow-soft flex flex-col shrink-1 min-h-0 transition-colors duration-500"
+                    <Card
+                        className="relative h-full max-h-full w-auto min-w-[320px] max-w-full aspect-[2/3] overflow-hidden shadow-soft flex flex-col shrink-0 transition-colors duration-500 border-none justify-end"
                         style={{ backgroundColor: currentEvent.color }}
                     >
 
@@ -134,33 +138,35 @@ export default function EventCard() {
 
                             {/* Content */}
                             <div className="flex-1 flex flex-col justify-between min-w-0">
-                                <div className="flex justify-between items-start">
-                                    <h3 className="text-white font-bold text-base leading-tight truncate pr-1">{currentEvent.title}</h3>
-                                    <span className="text-[10px] text-brand-gray/80 underline decoration-2 underline-offset-2 shrink-0">{currentEvent.subtitle}</span>
+                                <div className="flex justify-between items-start gap-2">
+                                    <h3 className="text-white font-bold text-base leading-tight break-words">{currentEvent.title}</h3>
+                                    <span className="text-[10px] text-brand-gray/80 underline decoration-2 underline-offset-2 shrink-0 pt-0.5">{currentEvent.subtitle}</span>
                                 </div>
 
                                 <p className="text-brand-gray text-[9px] leading-tight mt-1 line-clamp-2">
                                     {currentEvent.description}
                                 </p>
 
-                                <button
+                                <Button
                                     onClick={() => setIsModalOpen(true)}
-                                    className="mt-2 w-full text-brand-dark text-[10px] font-bold py-1.5 rounded-full hover:bg-white transition-colors"
+                                    size="sm"
+                                    className="mt-2 w-full text-brand-dark text-[10px] font-bold rounded-full hover:bg-white transition-colors h-8"
                                     style={{ backgroundColor: currentEvent.buttonColor }}
                                 >
                                     Conocer más
-                                </button>
+                                </Button>
                             </div>
                         </div>
-                    </div>
+                    </Card>
 
                     {/* Right Arrow */}
-                    <button
+                    <Button
                         onClick={nextEvent}
-                        className="w-10 h-10 bg-brand-dark rounded-xl flex items-center justify-center text-white shadow-md shrink-0 hover:scale-105 transition-transform"
+                        size="icon"
+                        className="bg-brand-dark text-white rounded-2xl hover:bg-brand-dark/90 hover:scale-105 transition-transform shadow-md shrink-0"
                     >
                         <CaretRight size={24} weight="bold" />
-                    </button>
+                    </Button>
                 </div>
 
                 {/* Pagination Dots */}
@@ -172,7 +178,7 @@ export default function EventCard() {
                         ></div>
                     ))}
                 </div>
-            </div>
+            </div >
         </>
     );
 }

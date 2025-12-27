@@ -1,8 +1,8 @@
 "use client";
 
 import { Info } from "@phosphor-icons/react";
-import FooterPattern from "../../components/shared/FooterPattern";
-import PageHeader from "../../components/shared/PageHeader";
+import FooterPattern from "../../components/layout/FooterPattern";
+import PageHeader from "../../components/layout/PageHeader";
 
 export default function InfoPage() {
     return (

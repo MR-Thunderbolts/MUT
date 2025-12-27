@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 import Link from "next/link";
 
 interface StoreCardProps {
@@ -11,7 +13,10 @@ interface StoreCardProps {
 
 export default function StoreCard({ id, name, image, status }: StoreCardProps) {
     return (
-        <Link href={`/tiendas/${id}`} className="block relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-md hover:scale-[1.02] transition-transform">
+        <Link href={`/tiendas/${id}`} className={cn(
+            "block relative w-full aspect-[3/4] rounded-3xl overflow-hidden shadow-soft hover:scale-[1.02] transition-transform",
+            "border border-brand-gray/20" // Optional: subtle border for definition
+        )}>
             {/* Background Image */}
             <img src={image} alt={name} className="absolute inset-0 w-full h-full object-cover" />
 

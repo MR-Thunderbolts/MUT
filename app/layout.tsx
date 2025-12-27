@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import SimpleHeader from "../components/shared/SimpleHeader";
+import SimpleHeader from "@/components/layout/SimpleHeader";
+import IntroManager from "@/components/features/intro/IntroManager";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -14,6 +15,13 @@ export const metadata: Metadata = {
   description: "Digital Signage PWA",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false, // Often needed for kiosks to prevent accidental zooming
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -21,15 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.variable} antialiased h-[100dvh] overflow-hidden`}>
-        <main className="flex flex-col h-full w-full bg-brand-cream text-brand-dark">
+      <body className="font-sans antialiased h-[100dvh] w-screen overflow-hidden flex flex-col bg-brand-cream">
+        <IntroManager />
+        <main className="flex-1 relative overflow-hidden text-brand-dark flex flex-col">
           {/* Top Zone - Auto height based on content */}
           <div className="w-full flex items-start justify-center relative z-50 pointer-events-auto shrink-0">
             <SimpleHeader />
           </div>
 
           {/* Middle Zone - Fills remaining space */}
-          <div className="w-full flex-1 relative z-10 overflow-y-auto no-scrollbar pointer-events-auto min-h-0">
+          <div className="w-full flex-1 relative z-10 pointer-events-auto min-h-0">
             {children}
           </div>
 
