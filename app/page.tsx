@@ -173,7 +173,7 @@ function MapContent() {
         </div>
 
         {/* Level Selector - Right Side (Fixed) */}
-        <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
+        <div className="fixed right-4 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
           <div className="pointer-events-auto">
             <MapLevelSelector
               currentLevel={currentLevel}
@@ -185,8 +185,8 @@ function MapContent() {
         {/* Current Level Indicator (Floating) */}
         <LocationPill label={`PISO ${currentLevel}`} />
 
-        {/* Re-center Button - Bottom Left */}
-        <div className="absolute left-4 top-1/2 translate-y-[116px] z-10 pointer-events-auto">
+        {/* Re-center Button - Bottom Left (Above Legend) */}
+        <div className="fixed left-4 bottom-28 z-10 pointer-events-auto">
           <button
             onClick={handleRecenter}
             className="bg-white/90 backdrop-blur-sm border border-brand-dark/5 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 active:scale-95"
