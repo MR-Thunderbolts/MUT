@@ -100,20 +100,20 @@ export default function EventCard() {
 
             <div className="w-full h-full flex flex-col items-center justify-center relative p-4 gap-4">
 
-                {/* Card Row with Arrows - Fills available vertical space */}
-                <div className="flex flex-1 items-center justify-center w-full gap-4 min-h-0">
-                    {/* Left Arrow */}
+                {/* Card Row with Arrows - Fills available vertical space relative */}
+                <div className="flex flex-1 items-center justify-center w-full min-h-0 relative px-2">
+                    {/* Left Arrow - Absolute Overlay */}
                     <Button
                         onClick={prevEvent}
                         size="icon"
-                        className="bg-brand-dark text-white rounded-2xl hover:bg-brand-dark/90 hover:scale-105 transition-transform shadow-md shrink-0"
+                        className="absolute left-0 z-30 bg-white/10 backdrop-blur-md text-brand-dark rounded-full hover:bg-white/30 hover:scale-105 transition-all shadow-md shrink-0 w-10 h-10 border border-white/20"
                     >
                         <CaretLeft size={24} weight="bold" />
                     </Button>
 
                     {/* Main Card Container */}
                     <Card
-                        className="relative h-full max-h-full w-auto min-w-[320px] max-w-full aspect-[2/3] overflow-hidden shadow-soft flex flex-col shrink-0 transition-colors duration-500 border-none justify-end"
+                        className="relative h-full max-h-full w-auto min-w-[280px] max-w-full aspect-[2/3] overflow-hidden shadow-soft flex flex-col shrink-0 transition-colors duration-500 border-none justify-end mx-8"
                         style={{ backgroundColor: currentEvent.color }}
                     >
 
@@ -159,11 +159,11 @@ export default function EventCard() {
                         </div>
                     </Card>
 
-                    {/* Right Arrow */}
+                    {/* Right Arrow - Absolute Overlay */}
                     <Button
                         onClick={nextEvent}
                         size="icon"
-                        className="bg-brand-dark text-white rounded-2xl hover:bg-brand-dark/90 hover:scale-105 transition-transform shadow-md shrink-0"
+                        className="absolute right-0 z-30 bg-white/10 backdrop-blur-md text-brand-dark rounded-full hover:bg-white/30 hover:scale-105 transition-all shadow-md shrink-0 w-10 h-10 border border-white/20"
                     >
                         <CaretRight size={24} weight="bold" />
                     </Button>

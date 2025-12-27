@@ -77,9 +77,11 @@ export default function MapLegendModal() {
 
     return (
         <div
-            className={`fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-[60] ${isOpen ? "translate-y-0" : "translate-y-[calc(100%-60px)]"
-                }`}
-            style={{ maxHeight: "80vh" }}
+            className="fixed bottom-0 left-0 right-0 bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out z-[70] pb-[env(safe-area-inset-bottom)]"
+            style={{
+                maxHeight: "80vh",
+                transform: isOpen ? "translateY(0)" : "translateY(calc(100% - 60px - env(safe-area-inset-bottom)))"
+            }}
         >
             {/* Handle / Header */}
             <div
