@@ -15,7 +15,7 @@ export default function ServicesPage() {
         <FooterPattern />
       </div>
 
-      <div className="flex-1 flex flex-col items-center gap-2 px-6 z-10 w-full pt-4">
+      <div className="flex-1 flex flex-col items-center gap-2 px-6 z-10 w-full pt-4 pb-32">
         <PageHeader
           title="¡Muévete con libertad!"
           subtitle="Descubre los servicios disponibles en MUT"

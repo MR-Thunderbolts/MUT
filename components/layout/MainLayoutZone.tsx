@@ -21,7 +21,7 @@ export default function MainLayoutZone({ children }: { children: React.ReactNode
             ref={scrollRef}
             className={cn(
                 "w-full flex-1 relative z-10 pointer-events-auto min-h-0",
-                isMapPage ? "overflow-hidden" : "overflow-y-auto no-scrollbar",
+                isMapPage ? "overflow-hidden" : "overflow-y-auto no-scrollbar pb-[env(safe-area-inset-bottom)]",
                 // Extra padding/spacing if needed globally can go here
             )}
         >

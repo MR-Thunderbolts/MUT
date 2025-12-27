@@ -113,7 +113,7 @@ export default function EventCard() {
 
                     {/* Main Card Container */}
                     <Card
-                        className="relative h-full max-h-full w-auto min-w-[280px] max-w-full aspect-[2/3] overflow-hidden shadow-soft flex flex-col shrink-0 transition-colors duration-500 border-none justify-end mx-8"
+                        className="relative h-full max-h-full w-auto min-w-[260px] max-w-full aspect-[2/3] overflow-hidden shadow-soft flex flex-col shrink-0 transition-colors duration-500 border-none justify-end mx-2 sm:mx-8"
                         style={{ backgroundColor: currentEvent.color }}
                     >
 
