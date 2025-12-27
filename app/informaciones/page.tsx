@@ -57,7 +57,7 @@ export default function InfoPage() {
             </div>
 
             {/* Footer Pattern */}
-            <div className="absolute bottom-0 left-0 right-0 z-0">
+            <div className="fixed bottom-0 left-0 right-0 z-0 pointer-events-none">
                 <FooterPattern />
             </div>
         </div>

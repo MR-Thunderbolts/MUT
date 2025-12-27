@@ -100,83 +100,82 @@ export default function EventCard() {
 
             <div className="w-full h-full flex flex-col items-center justify-center relative p-4 gap-4">
 
-                {/* Card Row with Arrows - Fills available vertical space relative */}
-                <div className="flex flex-1 items-center justify-center w-full min-h-0 relative px-2">
-                    {/* Left Arrow - Absolute Overlay */}
-                    <Button
-                        onClick={prevEvent}
-                        size="icon"
-                        className="absolute left-0 z-30 bg-white/10 backdrop-blur-md text-brand-dark rounded-full hover:bg-white/30 hover:scale-105 transition-all shadow-md shrink-0 w-10 h-10 border border-white/20"
-                    >
-                        <CaretLeft size={24} weight="bold" />
-                    </Button>
+                {/* Card Container with Navigation */}
+                <div className="flex-1 w-full flex flex-col items-center justify-center min-h-0 gap-4 relative">
 
-                    {/* Main Card Container */}
-                    <Card
-                        className="relative h-full max-h-full w-auto min-w-[260px] max-w-full aspect-[2/3] overflow-hidden shadow-soft flex flex-col shrink-0 transition-colors duration-500 border-none justify-end mx-2 sm:mx-8"
-                        style={{ backgroundColor: currentEvent.color }}
-                    >
-
-                        {/* Background Graphics / Image Placeholder */}
-                        <div className="absolute inset-0 flex items-center justify-center opacity-90">
-                            <h1 className="text-5xl font-black text-white/20 text-center leading-none tracking-tighter uppercase break-words px-4">
-                                {currentEvent.title}
-                            </h1>
-                        </div>
-
-                        {/* Bottom Overlay Card */}
-                        <div className="mt-auto mx-3 mb-3 bg-brand-dark rounded-2xl p-3 flex gap-3 shadow-lg relative z-20">
-
-                            {/* Date Widget */}
-                            <div className="bg-white rounded-xl w-16 shrink-0 flex flex-col items-center justify-center py-1 shadow-sm">
-                                <span className="text-brand-dark font-bold text-lg leading-none">{currentEvent.dateStart}</span>
-                                <span className="text-brand-dark font-bold text-[10px] uppercase">{currentEvent.month}</span>
-                                <div className="w-8 h-[1px] bg-brand-dark my-0.5"></div>
-                                <span className="text-brand-dark font-bold text-lg leading-none">{currentEvent.dateEnd}</span>
-                                <span className="text-brand-dark font-bold text-[10px] uppercase">{currentEvent.month}</span>
+                    <div className="relative w-full max-w-[360px] aspect-[2/3] flex items-center justify-center">
+                        {/* Main Card */}
+                        <Card
+                            className="h-full w-full rounded-3xl overflow-hidden shadow-xl flex flex-col border-none relative z-10"
+                            style={{ backgroundColor: currentEvent.color }}
+                        >
+                            {/* Background Title Watermark */}
+                            <div className="absolute inset-0 flex items-center justify-center opacity-90 pointer-events-none">
+                                <h1 className="text-5xl font-black text-white/20 text-center leading-none tracking-tighter uppercase break-words px-4 select-none">
+                                    {currentEvent.title}
+                                </h1>
                             </div>
 
-                            {/* Content */}
-                            <div className="flex-1 flex flex-col justify-between min-w-0">
-                                <div className="flex justify-between items-start gap-2">
-                                    <h3 className="text-white font-bold text-base leading-tight break-words">{currentEvent.title}</h3>
-                                    <span className="text-[10px] text-brand-gray/80 underline decoration-2 underline-offset-2 shrink-0 pt-0.5">{currentEvent.subtitle}</span>
+                            {/* Content Overlay */}
+                            <div className="mt-auto m-3 bg-brand-dark rounded-2xl p-3 flex gap-3 shadow-lg relative z-20">
+                                {/* Date Box */}
+                                <div className="bg-white rounded-xl w-14 shrink-0 flex flex-col items-center justify-center py-2 shadow-sm">
+                                    <span className="text-brand-dark font-bold text-lg leading-none">{currentEvent.dateStart}</span>
+                                    <span className="text-brand-dark font-bold text-[9px] uppercase tracking-wider">{currentEvent.month}</span>
+                                    <div className="w-6 h-[1px] bg-brand-dark/20 my-1"></div>
+                                    <span className="text-brand-dark font-bold text-lg leading-none">{currentEvent.dateEnd}</span>
                                 </div>
 
-                                <p className="text-brand-gray text-[9px] leading-tight mt-1 line-clamp-2">
-                                    {currentEvent.description}
-                                </p>
+                                {/* Text Content */}
+                                <div className="flex-1 flex flex-col justify-between min-w-0">
+                                    <div>
+                                        <div className="flex justify-between items-start gap-1">
+                                            <h3 className="text-white font-bold text-sm leading-tight line-clamp-2">{currentEvent.title}</h3>
+                                        </div>
+                                        <p className="text-brand-gray/80 text-[10px] mt-1 line-clamp-2 leading-relaxed">
+                                            {currentEvent.description}
+                                        </p>
+                                    </div>
 
-                                <Button
-                                    onClick={() => setIsModalOpen(true)}
-                                    size="sm"
-                                    className="mt-2 w-full text-brand-dark text-[10px] font-bold rounded-full hover:bg-white transition-colors h-8"
-                                    style={{ backgroundColor: currentEvent.buttonColor }}
-                                >
-                                    Conocer más
-                                </Button>
+                                    <Button
+                                        onClick={() => setIsModalOpen(true)}
+                                        size="sm"
+                                        className="mt-2 w-full h-7 text-[10px] font-bold rounded-full hover:brightness-110 transition-all active:scale-95"
+                                        style={{ backgroundColor: currentEvent.buttonColor, color: '#393939' }}
+                                    >
+                                        Ver detalles
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
-                    </Card>
+                        </Card>
 
-                    {/* Right Arrow - Absolute Overlay */}
-                    <Button
-                        onClick={nextEvent}
-                        size="icon"
-                        className="absolute right-0 z-30 bg-white/10 backdrop-blur-md text-brand-dark rounded-full hover:bg-white/30 hover:scale-105 transition-all shadow-md shrink-0 w-10 h-10 border border-white/20"
-                    >
-                        <CaretRight size={24} weight="bold" />
-                    </Button>
-                </div>
+                        {/* Navigation Arrows - Absolute on sides but large touch targets */}
+                        <Button
+                            onClick={prevEvent}
+                            className="absolute left-[-12px] top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white text-brand-dark shadow-lg border border-brand-gray/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                            aria-label="Previous event"
+                        >
+                            <CaretLeft size={20} weight="bold" />
+                        </Button>
 
-                {/* Pagination Dots */}
-                <div className="flex justify-center gap-2 shrink-0">
-                    {EVENTS.map((_, index) => (
-                        <div
-                            key={index}
-                            className={`w-3 h-3 rounded-full transition-colors duration-300 ${index === currentIndex ? "bg-brand-dark scale-110" : "bg-brand-gray"}`}
-                        ></div>
-                    ))}
+                        <Button
+                            onClick={nextEvent}
+                            className="absolute right-[-12px] top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white text-brand-dark shadow-lg border border-brand-gray/20 flex items-center justify-center hover:scale-110 active:scale-95 transition-all"
+                            aria-label="Next event"
+                        >
+                            <CaretRight size={20} weight="bold" />
+                        </Button>
+                    </div>
+
+                    {/* Pagination Dots */}
+                    <div className="flex justify-center gap-2 h-4 items-center shrink-0">
+                        {EVENTS.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`rounded-full transition-all duration-300 ${index === currentIndex ? "w-2.5 h-2.5 bg-brand-dark" : "w-1.5 h-1.5 bg-brand-dark/30"}`}
+                            ></div>
+                        ))}
+                    </div>
                 </div>
             </div >
         </>

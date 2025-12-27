@@ -11,7 +11,7 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col h-full w-full bg-brand-cream relative">
       {/* Decorative Background Elements (Footer Pattern) */}
-      <div className="absolute bottom-0 left-0 right-0 z-0">
+      <div className="fixed bottom-0 left-0 right-0 z-0 pointer-events-none">
         <FooterPattern />
       </div>
 

@@ -20,11 +20,13 @@ body {
   font-family: var(--font-montserrat), sans-serif;
   overflow: hidden;
   overscroll-behavior: none;
+  /* Robust viewport height for mobile */
   height: 100vh;
-  /* Fallback */
   height: 100dvh;
-  min-height: 100vh;
-  /* Fallback for newer dvh units on older browsers */
+  /* Prevent scroll chaining */
+  overscroll-behavior: none;
+  /* Safe area padding for root */
+  padding-bottom: env(safe-area-inset-bottom, 0);
 }
 
 /* Hide main content until intro is finished to prevent flash */
