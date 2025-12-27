@@ -9,7 +9,7 @@ export default function ServicesPage() {
   const [activeModal, setActiveModal] = useState<"bicihub" | "parking" | null>(null);
 
   return (
-    <div className="flex flex-col h-full w-full bg-brand-cream relative overflow-hidden">
+    <div className="flex flex-col h-full w-full bg-brand-cream relative">
       {/* Decorative Background Elements (Footer Pattern) */}
       <div className="absolute bottom-0 left-0 right-0 z-0">
         <FooterPattern />

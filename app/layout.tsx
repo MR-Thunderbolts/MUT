@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import SimpleHeader from "@/components/layout/SimpleHeader";
 import IntroManager from "@/components/features/intro/IntroManager";
+import MainLayoutZone from "@/components/layout/MainLayoutZone";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -38,9 +39,10 @@ export default function RootLayout({
           </div>
 
           {/* Middle Zone - Fills remaining space */}
-          <div className="w-full flex-1 relative z-10 pointer-events-auto min-h-0">
+          {/* Middle Zone - Fills remaining space */}
+          <MainLayoutZone>
             {children}
-          </div>
+          </MainLayoutZone>
 
           {/* Bottom Zone Removed as per user request */}
         </main>

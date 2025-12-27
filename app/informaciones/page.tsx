@@ -6,7 +6,7 @@ import PageHeader from "../../components/layout/PageHeader";
 
 export default function InfoPage() {
     return (
-        <div className="flex flex-col items-center h-full w-full relative overflow-hidden">
+        <div className="flex flex-col items-center h-full w-full relative">
             {/* Main Content Container */}
             <div className="flex-1 w-full flex flex-col items-center px-6 gap-4 z-10 pb-20 pt-4">
 

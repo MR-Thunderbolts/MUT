@@ -31,7 +31,7 @@ export default function StoresPage() {
     }, [selectedCategory, searchQuery]);
 
     return (
-        <div className="h-full w-full bg-brand-cream overflow-y-auto no-scrollbar">
+        <div className="h-full w-full bg-brand-cream">
             <div className="pt-4">
                 <PageHeader
                     title="¡Encuentra lo que buscas!"
