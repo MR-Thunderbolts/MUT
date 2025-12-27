@@ -20,10 +20,10 @@ export default function SimpleHeader() {
 
     return (
         <div className="w-full bg-brand-coral flex flex-col items-center justify-center pt-4 pb-4 shadow-soft pointer-events-auto">
-            <span className="text-white font-bold text-lg mb-3">
+            <span className="text-white font-bold text-lg mb-3 min-h-[28px] flex items-center">
                 {navItems.find(item => isActive(item.href) && (item.href !== "/" || pathname === "/"))?.label || "Ver y Hacer"}
             </span>
-            <div className="bg-white rounded-full px-8 py-2 shadow-md flex justify-between items-center text-brand-coral w-[85%] max-w-md">
+            <div className="bg-white rounded-full px-4 py-2 shadow-md flex justify-between items-center text-brand-coral w-[95%] max-w-md">
                 {navItems.map((item) => {
                     const active = item.href === "/" ? pathname === "/" : isActive(item.href);
                     const Icon = item.icon;
